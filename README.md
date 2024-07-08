@@ -23,7 +23,7 @@ $ conda env create -f environment.yml
 
 #### 2. Data and model installation
 
-Download the model weights and necessary data here. Unzip the contents into `desp/data/`. 
+Download the pre-trained model weights and necessary data [at this link](https://figshare.com/articles/preprint/Pre-trained_models_and_data_for_Double-Ended_Synthesis_Planning_DESP_/25956076). Unzip the contents into `desp/data/`. 
 
 #### 3. Run experiments
 
