@@ -1,0 +1,21 @@
+name: desp
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pytorch
+  - pytorch-cuda=12.1
+  - cuda-toolkit
+  - networkx
+  - python-graphviz
+  - numpy
+  - scipy
+  - pandas
+  - tqdm
+  - faiss-gpu
+  - pip:
+    - rdkit
+    - rdchiral
