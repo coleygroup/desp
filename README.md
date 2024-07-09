@@ -40,13 +40,6 @@ Download the pre-trained model weights [at this link](https://figshare.com/artic
   10. `pistachio_hard_targets.txt` - Line-delimited text file of pairs of targets and their starting material for benchmarking on Pistachio Hard. (i.e. `('CCOc1cc(-c2ccc(F)cc2-c2nncn2C)cc(-c2nc3cc(CN[C@@H]4CCC[C@@H]4O)cc(OC)c3o2)n1', 'CCOC(=O)c1cc(F)ccc1Br')`)
   11. `pistachio_reachable_targets.txt` - Like above, but for the Pistachio Reachable test set.
   12. `uspto_190_targets.txt` - Like above, but for the USPTO-190 test set.
-
-  ### Some Javascript
-  ```js
-  function logSomething(something) {
-    console.log('Something', something);
-  }
-  ```
 </details>
 
 #### 3. Run experiments
