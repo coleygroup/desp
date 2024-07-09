@@ -47,4 +47,4 @@ yields the files needed to train our variant of the Retro* value model (Chen et 
 
 ### 5. Train models
 
-Code and scripts for training the forward template and building block models is found in `desp/inference/models/fwd_model/`. Code and scripts for training the synthetic distance and Retro* value models is found in `desp/inference/models/syn_value/`
+Code and scripts for training the forward template and building block models is found in `desp/inference/models/fwd_model/`. Code and scripts for training the synthetic distance and Retro* value models is found in `desp/inference/models/syn_value/`. More detailed instructions coming soon!
