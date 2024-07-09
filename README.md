@@ -58,4 +58,4 @@ Image("route.png", width=300)
 
 ## Processing and Training from Scratch
 
-See the guide at `/processing/PROCESSNG.md`.
+See the guide at `/processing/README.md`.
