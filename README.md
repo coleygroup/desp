@@ -1,13 +1,13 @@
 <img align="center" src="DESP.png" width="350px" />
 
 **Double-Ended Synthesis Planning with Goal-Constrained Bidirectional Search**\
-_<ins>Kevin Yu</ins>, Jihye Roh, Ziang Li, Wenhao Gao, Runzhong Wang, Connor W. Coley_
+_Kevin Yu, Jihye Roh, Ziang Li, Wenhao Gao, Runzhong Wang, Connor W. Coley_
 
 This repo contains code for DESP (Double-Ended Synthesis Planning), which applies goal-constrained bidirectional search to computer-aided synthesis planning. DESP is designed to propose a synthesis plan towards a given target molecule under the user-specified constraint of using one or more specific starting materials.
 
 ## Quick Start
 
-To reproduce our experimental results or try DESP with our pretrained models, perform the following steps after cloning this repository.
+To reproduce our experimental results or to try DESP with our pretrained models, perform the following steps after cloning this repository.
 
 #### 1. Environment Setup
 
@@ -23,7 +23,7 @@ $ conda env create -f environment.yml
 
 #### 2. Data and model installation
 
-Download the pre-trained model weights and necessary data [at this link](https://figshare.com/articles/preprint/Pre-trained_models_and_data_for_Double-Ended_Synthesis_Planning_DESP_/25956076). Unzip the contents into `desp/data/`. 
+Download the pre-trained model weights [at this link](https://figshare.com/articles/preprint/25956076). Unzip the contents of `desp_data.zip` into `desp/data/`. 
 
 #### 3. Run experiments
 
@@ -49,9 +49,13 @@ If DESP is able to find a route for the given inputs, the route can be visualize
 ```Python
 desp.visualize_route(route, 'route')
 ```
-This will save a DOT file `desp/route` and image file `desp/route.png` to your current directory which visualizes the solved route. To view the image directly in a IPython notebook, you can run, for example:
+This will save a DOT file `desp/route` and image file `desp/route.png` to the directory which visualizes the solved route. To view the image directly in a IPython notebook, you can run, for example:
 ```Python
 from IPython.display import Image
 
 Image("route.png", width=300)
 ```
+
+## Processing and Training from Scratch
+
+See the guide at `/processing/PROCESSNG.md`.

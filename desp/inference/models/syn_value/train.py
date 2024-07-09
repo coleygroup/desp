@@ -82,12 +82,12 @@ class SynDistTrainer:
 
         # init datasets and loaders
         train_dataset = FingerprintDataset(
-            fp_file=os.path.join(self.processed_data_path, "sd_train_fp_v2.npz"),
-            label_file=os.path.join(self.processed_data_path, "sd_train_labels_v2.npy"),
+            fp_file=os.path.join(self.processed_data_path, "sd_train_fp.npz"),
+            label_file=os.path.join(self.processed_data_path, "sd_train_labels.npy"),
         )
         val_dataset = FingerprintDataset(
-            fp_file=os.path.join(self.processed_data_path, "sd_val_fp_v2.npz"),
-            label_file=os.path.join(self.processed_data_path, "sd_val_labels_v2.npy"),
+            fp_file=os.path.join(self.processed_data_path, "sd_val_fp.npz"),
+            label_file=os.path.join(self.processed_data_path, "sd_val_labels.npy"),
         )
 
         train_loader = init_loader(
@@ -251,7 +251,7 @@ class SynDistTrainer:
                 }
                 torch.save(
                     state,
-                    os.path.join(self.model_path, "model_latest_sd_v2.pt"),
+                    os.path.join(self.model_path, "model_latest_sd.pt"),
                 )
 
             # early stopping

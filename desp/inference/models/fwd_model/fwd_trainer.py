@@ -82,9 +82,9 @@ class FwdTemplRelTrainer:
 
         # init datasets and loaders
         train_dataset = FingerprintDataset(
-            fp_file=os.path.join(self.processed_data_path, "v2/fwd_train_fp_bb.npz"),
+            fp_file=os.path.join(self.processed_data_path, "fwd_train_fp_bb.npz"),
             label_file=os.path.join(
-                self.processed_data_path, "v2/fwd_train_labels_bb.npz"
+                self.processed_data_path, "fwd_train_labels_bb.npz"
             ),
             model_type=self.model_type,
         )
@@ -280,7 +280,7 @@ class FwdTemplRelTrainer:
                 }
                 torch.save(
                     state,
-                    os.path.join(self.model_path, "model_latest_bb_BEST_v2.pt"),
+                    os.path.join(self.model_path, "model_latest_bb_BEST.pt"),
                 )
 
             # early stopping
@@ -309,7 +309,7 @@ class FwdTemplRelTrainer:
 
 def train_main(args):
     args.device = (
-        torch.device("cuda:1") if torch.cuda.is_available() else torch.device("cpu")
+        torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
     )
 
     with wandb.init(project="", config=args):
