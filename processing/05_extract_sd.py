@@ -137,8 +137,8 @@ if __name__ == "__main__":
     print("\tvalues:", values.shape)
 
     # Save the training data
-    sparse.save_npz("data/sd_train_fp.npz", fps)
-    np.save("data/sd_train_labels.npy", values)
+    sparse.save_npz("output/sd_train_fp.npz", fps)
+    np.save("output/sd_train_labels.npy", values)
     print("Saved training data!")
 
     """
@@ -173,6 +173,6 @@ if __name__ == "__main__":
     print("\tvalues:", values.shape)
 
     # Save the validation data
-    sparse.save_npz("data/sd_val_fp.npz", fps)
-    np.save("data/sd_val_labels.npy", values)
+    sparse.save_npz("output/sd_val_fp.npz", fps)
+    np.save("output/sd_val_labels.npy", values)
     print("Saved validation data!")

@@ -2,6 +2,7 @@ import copy
 import pickle
 import json
 import numpy as np
+import os
 
 from tqdm import tqdm
 from scipy import sparse
@@ -13,9 +14,9 @@ from utils import clear_atom_map, smi_to_fp, template_to_fp
 
 if __name__ == "__main__":
     with open("data/filtered_fwd_train_real.jsonl", "r") as f:
-        fwd_rxns = [json.loads(line) for line in f][:1000]
+        fwd_rxns = [json.loads(line) for line in f]
     with open("data/val_rxns_with_template.jsonl", "r") as f:
-        val_rxns = [json.loads(line) for line in f][:100]
+        val_rxns = [json.loads(line) for line in f]
     with open("data/building_blocks.pkl", "rb") as f:
         building_blocks = pickle.load(f)
     print("Loaded fwd reaction set and building block set")
@@ -188,13 +189,13 @@ if __name__ == "__main__":
 
     print("Saving final fwd training set...")
     # Save final fwd training set
-    sparse.save_npz("data/fwd_train_fp.npz", fp_matrix)
-    np.save("data/fwd_train_labels.npy", labels_temp)
+    sparse.save_npz("output/fwd_train_fp.npz", fp_matrix)
+    np.save("output/fwd_train_labels.npy", labels_temp)
     # Save final BB training set
-    sparse.save_npz("data/fwd_train_fp_bb.npz", fp_matrix_bb)
-    sparse.save_npz("data/fwd_train_labels_bb.npz", labels_bb)
+    sparse.save_npz("output/fwd_train_fp_bb.npz", fp_matrix_bb)
+    sparse.save_npz("output/fwd_train_labels_bb.npz", labels_bb)
     # Save template to index mapping
-    with open("data/fwd_templ_to_idx.json", "w") as f:
+    with open("output/fwd_templ_to_idx.json", "w") as f:
         json.dump(fwd_templ_to_idx, f)
 
     """
@@ -279,8 +280,8 @@ if __name__ == "__main__":
 
     print("Saving final fwd validation set...")
     # Save final fwd training set
-    sparse.save_npz("data/fwd_val_fp.npz", fp_matrix)
-    np.save("data/fwd_val_labels.npy", labels_temp)
+    sparse.save_npz("output/fwd_val_fp.npz", fp_matrix)
+    np.save("output/fwd_val_labels.npy", labels_temp)
     # Save final BB training set
-    sparse.save_npz("data/fwd_val_fp_bb.npz", fp_matrix_bb)
-    sparse.save_npz("data/fwd_val_labels_bb.npz", labels_bb)
+    sparse.save_npz("output/fwd_val_fp_bb.npz", fp_matrix_bb)
+    sparse.save_npz("output/fwd_val_labels_bb.npz", labels_bb)

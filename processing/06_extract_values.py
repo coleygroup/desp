@@ -13,9 +13,9 @@ from utils import smi_to_fp
 
 if __name__ == "__main__":
     with open("data/filtered_train.jsonl", "r") as f:
-        train_rxns = [json.loads(line) for line in f][:1000]
+        train_rxns = [json.loads(line) for line in f]
     with open("data/val_rxns_with_template.jsonl", "r") as f:
-        val_rxns = [json.loads(line) for line in f][:500]
+        val_rxns = [json.loads(line) for line in f]
     with open("data/building_blocks.pkl", "rb") as f:
         building_blocks = pickle.load(f)
     print("Loaded reaction set and building block set")
@@ -79,8 +79,8 @@ if __name__ == "__main__":
     print("\tvalues:", values.shape)
 
     # Save the training data
-    sparse.save_npz("data/ret_train_fp.npz", fps)
-    np.save("data/ret_train_labels.npy", values)
+    sparse.save_npz("output/ret_train_fp.npz", fps)
+    np.save("output/ret_train_labels.npy", values)
     print("Saved training data!")
 
     """
@@ -109,6 +109,6 @@ if __name__ == "__main__":
     print("\tvalues:", values.shape)
 
     # Save the validation data
-    sparse.save_npz("data/ret_val_fp.npz", fps)
-    np.save("data/ret_val_labels.npy", values)
+    sparse.save_npz("output/ret_val_fp.npz", fps)
+    np.save("output/ret_val_labels.npy", values)
     print("Saved validation data!")
