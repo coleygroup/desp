@@ -16,7 +16,7 @@ from utils import smi_to_fp, tanimoto
 
 if __name__ == "__main__":
     with open("data/filtered_train.jsonl", "r") as f:
-        fwd_rxns = [json.loads(line) for line in f]
+        train_rxns = [json.loads(line) for line in f]
     with open("data/val_rxns_with_template.jsonl", "r") as f:
         val_rxns = [json.loads(line) for line in f]
     with open("data/building_blocks.pkl", "rb") as f:
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     # Populate the reaction network with loaded reactions
     train_network = ReactionNetwork()
-    num_nodes, num_edges = train_network.populate_with_templates(fwd_rxns)
+    num_nodes, num_edges = train_network.populate_with_templates(train_rxns)
     print(
         "Populated training network with {} nodes and {} edges".format(
             num_nodes, num_edges

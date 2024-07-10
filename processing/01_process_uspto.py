@@ -93,6 +93,6 @@ if __name__ == "__main__":
     print(f"Done deduplicating! Now have {len(deduplicated)} reactions!")
 
     # Write deduplicated reactions to file
-    with open("USPTO_processed_with_smiles.txt", "w") as f:
+    with open("data/USPTO_processed_with_smiles.txt", "w") as f:
         for fs, rxn in deduplicated.items():
             f.write(f"{fs}\t{rxn}\n")

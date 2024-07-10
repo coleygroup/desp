@@ -13,16 +13,16 @@ from utils import smi_to_fp
 
 if __name__ == "__main__":
     with open("data/filtered_train.jsonl", "r") as f:
-        fwd_rxns = [json.loads(line) for line in f]
+        train_rxns = [json.loads(line) for line in f][:1000]
     with open("data/val_rxns_with_template.jsonl", "r") as f:
-        val_rxns = [json.loads(line) for line in f]
+        val_rxns = [json.loads(line) for line in f][:500]
     with open("data/building_blocks.pkl", "rb") as f:
         building_blocks = pickle.load(f)
     print("Loaded reaction set and building block set")
 
     # Populate the reaction network with loaded reactions
     train_network = ReactionNetwork()
-    num_nodes, num_edges = train_network.populate_with_templates(fwd_rxns)
+    num_nodes, num_edges = train_network.populate_with_templates(train_rxns)
     print(
         "Populated training network with {} nodes and {} edges".format(
             num_nodes, num_edges
@@ -79,8 +79,8 @@ if __name__ == "__main__":
     print("\tvalues:", values.shape)
 
     # Save the training data
-    sparse.save_npz("data/ret_train_fp_v2.npz", fps)
-    np.save("data/ret_train_labels_v2.npy", values)
+    sparse.save_npz("data/ret_train_fp.npz", fps)
+    np.save("data/ret_train_labels.npy", values)
     print("Saved training data!")
 
     """
@@ -109,6 +109,6 @@ if __name__ == "__main__":
     print("\tvalues:", values.shape)
 
     # Save the validation data
-    sparse.save_npz("data/ret_val_fp_v2.npz", fps)
-    np.save("data/ret_val_labels_v2.npy", values)
+    sparse.save_npz("data/ret_val_fp.npz", fps)
+    np.save("data/ret_val_labels.npy", values)
     print("Saved validation data!")
