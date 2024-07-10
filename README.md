@@ -23,7 +23,7 @@ $ conda env create -f environment.yml
 
 #### 2. Data and model installation
 
-Download the pre-trained model weights [at this link](https://figshare.com/articles/preprint/25956076). Unzip the contents of `desp_data.zip` into `desp/data/`. 
+Download the pre-trained model weights [at this link](https://figshare.com/articles/preprint/25956076). Unzip the contents of `desp_data.zip` into `/desp/data/`. 
 
 <details>
   <summary>All components and their descriptions (useful if you want to train your own models / use your own data)</summary>

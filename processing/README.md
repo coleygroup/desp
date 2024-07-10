@@ -4,7 +4,7 @@ The following documentation will help anyone trying to train models from scratch
 
 ### 1. Processing and deduplicating raw reaction data
 
-`01_process_uspto.py` can be used to clean and deduplicate raw reaction data. It is written to take the  [USPTO-Full dataset](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873) on input and output a text file containing each reaction in frozenset and SMILES form (tab delimited, one reaction per line). Create a folder `/processing/data/` and place `1976_Sep2016_USPTOgrants_smiles.rsmi` (for the USPTO dataset) in the folder before running
+`01_process_uspto.py` can be used to clean and deduplicate raw reaction data. It is written to take the  [USPTO-Full dataset](https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873) on input (but can be adapted to any reaction corpus with atom mapping) and output a text file containing each reaction in frozenset and SMILES form (tab delimited, one reaction per line). Create a folder `/processing/data/` and place `1976_Sep2016_USPTOgrants_smiles.rsmi` (for the USPTO dataset) in the folder before running
 ```Python
 $ python 01_process_uspto.py
 ```
