@@ -27,23 +27,35 @@ will then yield a file `/processing/data/filtered_fwd_train.jsonl` of the same f
 Ensure the following are in `/processing/data/`:
 - `filtered_train.jsonl` (training split retro reactions with templates)
 - `filtered_fwd_train.jsonl` (filtered training split forward reaction with templates)
-- `filtered_val.jsonl` (validation split retro reactions with templates)
+- `val_rxns_with_template.jsonl` (validation split retro reactions with templates)
 - `building_blocks.pkl` (pickled dictionary indexed by building block SMILES. For our paper, we use a filtered version of the eMolecules dataset used by [Chen et al. 2020](https://www.dropbox.com/s/ar9cupb18hv96gj/retro_data.zip?e=1&dl=0). Our version can be found in `desp_data.zip` in our [figshare](https://figshare.com/articles/preprint/25956076))
 
 ```Python
 $ python 04_extract_fwd_training.py
 ```
-yields the files needed to train the forward template and building block models.
+outputs the files needed to train the forward template and building block models. Namely:
+- `fwd_train_fp.npz`: molecule + target concatenated fingerprints for template predictions
+- `fwd_train_labels.npy`: one-hot encoded labels of templates for training forward model
+- `fwd_val_fp.npz` + `fwd_val_labels.npy`: validation examples for above
+- `fwd_train_fp_bb.npz`: molecule + target + template concatenated fingerprints for BB prediction
+- `fwd_train_labels.npy`: 256-dimensional fingerprint of ground truth building blocks
+- `fwd_val_fp_bb.npz` + `fwd_val_labels_bb.npy`: validation examples for above
 
 ```Python
 $ python 05_extract_sd.py
 ```
-yields the files needed to train the synthetic distance model.
+outputs the files needed to train the synthetic distance model. Namely:
+- `sd_train_fp.npz`: concatenated fingerprints of `m1`, `m2` pairs for learning synthetic distance 
+- `sd_train_labels.npy`: ground truth synthetic distances
+- `sd_val_fp.npz` + `sd_val_labels.npy`: validation examples for above
 
 ```Python
 $ python 06_extract_values.py
 ```
-yields the files needed to train our variant of the Retro* value model (Chen et al. 2020).
+outputs the files needed to train our variant of the Retro* value model (Chen et al. 2020). Namely:
+- `ret_train_fp.npz`: fingerprints of molecules for training value model
+- `ret_train_labels.npy`: ground truth `V_m` values
+- `ret_val_fp.npz` + `ret_val_labels.npy`: validation examples for above
 
 ### 5. Train models
 
