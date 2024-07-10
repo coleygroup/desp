@@ -24,11 +24,11 @@ will then yield a file `/processing/data/filtered_fwd_train.jsonl` of the same f
 
 ### 4. Extract training examples
 
-Ensure the following are in `/processing/data/`:
+Create the director `/processing/output/`, and ensure the following are in `/processing/data/`:
 - `filtered_train.jsonl` (training split retro reactions with templates)
 - `filtered_fwd_train.jsonl` (filtered training split forward reaction with templates)
 - `val_rxns_with_template.jsonl` (validation split retro reactions with templates)
-- `building_blocks.pkl` (pickled dictionary indexed by building block SMILES. For our paper, we use a filtered version of the eMolecules dataset used by [Chen et al. 2020](https://www.dropbox.com/s/ar9cupb18hv96gj/retro_data.zip?e=1&dl=0). Our version can be found in `desp_data.zip` in our [figshare](https://figshare.com/articles/preprint/25956076))
+- `building_blocks.pkl` (pickled dictionary indexed by building block SMILES. For our paper, we use a filtered version of the eMolecules dataset used by [Chen et al. 2020](https://www.dropbox.com/s/ar9cupb18hv96gj/retro_data.zip?e=1&dl=0). Our version can be found in `desp_data.zip` in our [figshare](https://figshare.com/articles/preprint/25956076)).
 
 ```Python
 $ python 04_extract_fwd_training.py
