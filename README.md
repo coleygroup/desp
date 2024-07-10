@@ -44,7 +44,7 @@ Download the pre-trained model weights [at this link](https://figshare.com/artic
 
 #### 3. Run experiments
 
-To reproduce the experiments, navigate to the directory `desp/experiments/` and run the evaluation script. The first argument refers the benchmark set to use, while the second argument refers to the method to use. The results of the experiments will be saved in `desp/experiments/<benchmark_set>/<method>.txt`, along with a corresponding `.pkl` file containing the full search graphs of each search.
+To reproduce the experiments, navigate to the directory `/desp/experiments/` and run the evaluation script. The first argument refers the benchmark set to use, while the second argument refers to the method to use. The results of the experiments will be saved in `/desp/experiments/<benchmark_set>/<method>.txt`, along with a corresponding `.pkl` file containing the full search graphs of each search.
 ```bash
 $ sh evaluate.sh [pistachio_reachable|pistachio_hard|uspto_190] [f2e|f2f|retro|retro_sd|random|bfs]
 ```
@@ -52,7 +52,7 @@ A GPU is required for DESP-F2E or DESP-F2F. Specify the device in the evaluation
 
 #### 4. Run DESP on your own targets and starting materials
 
-To run DESP on your own specified targets and starting materials, navigate to the `desp/` directory. In a Python environment (IPython notebook, Python shell, Python script), initialize and invoke DESP with default parameters as follows:
+To run DESP on your own specified targets and starting materials, navigate to the `/desp/` directory. In a Python environment (IPython notebook, Python shell, Python script), initialize and invoke DESP with default parameters as follows:
 ```Python
 from DESP import DESP
 
@@ -62,11 +62,20 @@ result, route = desp.search(
     ['COC(=O)C1(c2ccc(Br)cc2)CCC(=O)CC1']   # List of starting materials SMILES
 )
 ```
+The following keyword arguments are currently supported for the search API:
+- `iteration_limit`: Maximum number of expansions for the search algorithm. Default: `500`
+- `top_n`: Number of retro templates to consider for retro model. Default: `50`
+- `top_m`: Number of forward templates to consider for forward template model. Default: `25`
+- `top_k`: Number of building blocks to consider in k-NN search. Default: `2`
+- `max_depth_top`: Maximum depth (including reaction nodes) for top-down search. Default: `21`
+- `max_depth_bot`: Maximum depth (including reactoin nodes) for bottom-up search. Default: `11`
+- `must_use_sm`: Flag to enforce the starting material constraint. Default: `True`
+
 If DESP is able to find a route for the given inputs, the route can be visualized by running:
 ```Python
 desp.visualize_route(route, 'route')
 ```
-This will save a DOT file `desp/route` and image file `desp/route.png` to the directory which visualizes the solved route. To view the image directly in a IPython notebook, you can run, for example:
+This will save a DOT file `/desp/route` and image file `/desp/route.png` to the directory which visualizes the solved route. To view the image directly in a IPython notebook, you can run, for example:
 ```Python
 from IPython.display import Image
 
@@ -76,6 +85,10 @@ Image("route.png", width=300)
 ## Processing and Training from Scratch
 
 See the guide at `/processing/README.md`.
+
+## Acknowledgements
+
+We thank the developers of [ASKCOS](https://gitlab.com/mlpds_mit/askcosv2/) and [Syntheseus](https://github.com/microsoft/syntheseus/) for releasing open source implementations of CASP algorithms that were referenced or adapted for this work.
 
 ## Citation
 
