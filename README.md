@@ -3,7 +3,7 @@
 **Double-Ended Synthesis Planning with Goal-Constrained Bidirectional Search**\
 _Kevin Yu, Jihye Roh, Ziang Li, Wenhao Gao, Runzhong Wang, Connor W. Coley_
 
-This repo contains code for DESP (Double-Ended Synthesis Planning), which applies goal-constrained bidirectional search to computer-aided synthesis planning. DESP is designed to propose a synthesis plan towards a given target molecule under the user-specified constraint of using one or more specific starting materials.
+This repo contains code for DESP (Double-Ended Synthesis Planning), which applies goal-constrained bidirectional search to computer-aided synthesis planning. DESP is designed to propose a synthesis plan towards a given target molecule under the user-specified constraint of using one or more specific starting materials. Read more about the algorithm in [our preprint](https://arxiv.org/abs/2407.06334).
 
 ## Quick Start
 
@@ -76,3 +76,17 @@ Image("route.png", width=300)
 ## Processing and Training from Scratch
 
 See the guide at `/processing/README.md`.
+
+## Citation
+
+```bibtex
+@misc{yu2024doubleendedsynthesisplanninggoalconstrained,
+      title={Double-Ended Synthesis Planning with Goal-Constrained Bidirectional Search}, 
+      author={Kevin Yu and Jihye Roh and Ziang Li and Wenhao Gao and Runzhong Wang and Connor W. Coley},
+      year={2024},
+      eprint={2407.06334},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2407.06334}, 
+}
+```
