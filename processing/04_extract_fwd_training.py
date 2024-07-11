@@ -13,7 +13,7 @@ from utils import clear_atom_map, smi_to_fp, template_to_fp
 
 
 if __name__ == "__main__":
-    with open("data/filtered_fwd_train_real.jsonl", "r") as f:
+    with open("data/filtered_fwd_train.jsonl", "r") as f:
         fwd_rxns = [json.loads(line) for line in f]
     with open("data/val_rxns_with_template.jsonl", "r") as f:
         val_rxns = [json.loads(line) for line in f]
@@ -206,7 +206,6 @@ if __name__ == "__main__":
     labels_temp = []
     fp_matrix_bb = []
     labels_bb = []
-    fwd_templ_to_idx = {}
     rxn_count = {}
     for rxn in tqdm(dedup_val_rxns):
         rxn_smiles = rxn["rxn_smiles"]
@@ -231,8 +230,9 @@ if __name__ == "__main__":
                 fp_matrix.append(concat_fp)
                 fp_matrix_bb.append(bb_concat_fp)
                 if template not in fwd_templ_to_idx:
-                    fwd_templ_to_idx[template] = len(fwd_templ_to_idx)
-                labels_temp.append(fwd_templ_to_idx[template])
+                    labels_temp.append(-1)
+                else:
+                    labels_temp.append(fwd_templ_to_idx[template])
                 labels_bb.append(
                     sparse.csr_matrix(smi_to_fp(reactant2, fp_size=256), dtype="int32")
                 )
@@ -246,8 +246,9 @@ if __name__ == "__main__":
                 fp_matrix.append(concat_fp)
                 fp_matrix_bb.append(bb_concat_fp)
                 if template not in fwd_templ_to_idx:
-                    fwd_templ_to_idx[template] = len(fwd_templ_to_idx)
-                labels_temp.append(fwd_templ_to_idx[template])
+                    labels_temp.append(-1)
+                else:
+                    labels_temp.append(fwd_templ_to_idx[template])
                 labels_bb.append(
                     sparse.csr_matrix(smi_to_fp(reactant1, fp_size=256), dtype="int32")
                 )
@@ -257,8 +258,9 @@ if __name__ == "__main__":
             concat_fp = sparse.hstack([reactant_fp, target_fp])
             fp_matrix.append(concat_fp)
             if template not in fwd_templ_to_idx:
-                fwd_templ_to_idx[template] = len(fwd_templ_to_idx)
-            labels_temp.append(fwd_templ_to_idx[template])
+                labels_temp.append(-1)
+            else:
+                labels_temp.append(fwd_templ_to_idx[template])
         if rxn_smiles in rxn_count:
             rxn_count[rxn_smiles] += 1
         else:
