@@ -29,7 +29,15 @@ class DespTree:
         self.target = Chem.CanonSmiles(target)
         self.starting_materials = [Chem.CanonSmiles(sm) for sm in starting_materials]
         self.strategy = strategy
-        assert self.strategy in ["f2e", "f2f", "retro", "retro_sd", "random", "bfs"]
+        assert self.strategy in [
+            "f2e",
+            "f2f",
+            "retro",
+            "retro_sd",
+            "random",
+            "bfs",
+            "bi-bfs",
+        ]
         self.building_blocks = building_blocks
         self.distance_fn = distance_fn
         self.heuristic_fn = heuristic_fn

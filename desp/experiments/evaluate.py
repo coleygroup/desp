@@ -37,7 +37,7 @@ def predict_one(target, starting):
         max_depth_bot=11,
         stop_on_first_solution=True,
         must_use_sm=True,
-        retro_only=False if args.strategy in ["f2e", "f2f"] else True,
+        retro_only=False if args.strategy in ["f2e", "f2f", "bi-bfs"] else True,
     )
     print(f"Starting search towards {target} from {starting}")
     result = searcher.run_search()
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     with open(args.bb_mol2idx, "r") as f:
         building_blocks = json.load(f)
 
-    if args.strategy in ["f2e", "f2f"]:
+    if args.strategy in ["f2e", "f2f", "bi-bfs"]:
         # Load fwd predictor
         fwd_predictor = ForwardPredictor(
             forward_model_path=args.fwd_model,

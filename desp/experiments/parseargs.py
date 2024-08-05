@@ -10,7 +10,7 @@ def parse_args():
         "--strategy",
         type=str,
         default="f2e",
-        choices=["f2e", "f2f", "retro", "retro_sd", "random", "bfs"],
+        choices=["f2e", "f2f", "retro", "retro_sd", "random", "bfs", "bi-bfs"],
         help="Strategy for predict_one() function",
     )
     parser.add_argument(

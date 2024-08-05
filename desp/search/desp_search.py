@@ -172,7 +172,7 @@ class DespSearch:
                 if self.strategy == "random":
                     # Pick random node
                     best_node = open_nodes[np.random.choice(len(open_nodes))][0]
-                elif self.strategy == "bfs":
+                elif self.strategy in ["bfs", "bi-bfs"]:
                     # Find the lowest cost among parent for each open node
                     parent_costs = []
                     for node, _ in open_nodes:
@@ -207,8 +207,27 @@ class DespSearch:
                     i -= 1
                     continue
 
-                # Pop node
-                best_node = min(open_nodes, key=lambda x: x[1])[0]
+                if self.strategy == "bi-bfs":
+                    # Find the lowest cost among children for each open node
+                    child_costs = []
+                    for node, _ in open_nodes:
+                        child_costs.append(
+                            min(
+                                [
+                                    rxn.cost
+                                    for rxn in self.search_graph.graph.successors(node)
+                                ],
+                                default=0,
+                            )
+                        )
+                    # Pick lowest depth open node with tie broken by lowest child cost
+                    best_node = min(
+                        open_nodes,
+                        key=lambda x: (x[0].depth, child_costs[open_nodes.index(x)]),
+                    )[0]
+                else:
+                    # Pop node
+                    best_node = min(open_nodes, key=lambda x: x[1])[0]
                 _ = self.expand_fwd(best_node, self.search_graph)
                 num_iterations += 1
                 pbar.update(1)
