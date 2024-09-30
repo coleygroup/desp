@@ -5,6 +5,8 @@ _Kevin Yu, Jihye Roh, Ziang Li, Wenhao Gao, Runzhong Wang, Connor W. Coley_
 
 This repo contains code for DESP (Double-Ended Synthesis Planning), which applies goal-constrained bidirectional search to computer-aided synthesis planning. DESP is designed to propose a synthesis plan towards a given target molecule under the user-specified constraint of using one or more specific starting materials. Read more about the algorithm in [our preprint](https://arxiv.org/abs/2407.06334).
 
+**Update (September 2024)**: We are happy to announce that DESP was accepted into NeurIPS 2024 as a Spotlight paper!
+
 ## Quick Start
 
 To reproduce our experimental results or to try DESP with our pretrained models, perform the following steps after cloning this repository.
