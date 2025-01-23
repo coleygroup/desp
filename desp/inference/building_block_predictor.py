@@ -46,7 +46,19 @@ class BuildingBlockPredictor(FwdTemplRel):
         # Load the building block tensor into Faiss index
         with open(bb_tensor_path, "rb") as f:
             bb_fps = sparse.load_npz(f)
-        bb_tensor = bb_fps.toarray().astype(np.float32)
+
+        # bb_tensor = bb_fps.toarray().astype(np.float32)
+        # Convert in smaller chunks to avoid memory spike
+        chunk_size = 10000  # Adjust this based on your memory/matrix dimensions
+        total_rows = bb_fps.shape[0]
+        bb_tensor = np.zeros((total_rows, bb_fps.shape[1]), dtype=np.float32)
+
+        for i in range(0, total_rows, chunk_size):
+            end_idx = min(i + chunk_size, total_rows)
+            bb_tensor[i:end_idx] = bb_fps[i:end_idx].toarray()
+            if i % (chunk_size * 10) == 0:
+                print(f"Processed {i}/{total_rows} rows...")
+        
         # self.bb_index = faiss.IndexFlatIP(pretrain_args.output_dim)
         quantizer = faiss.IndexFlatIP(pretrain_args.output_dim)
         self.bb_index = faiss.IndexIVFPQ(
