@@ -100,7 +100,7 @@ class DESP:
             iteration_limit (int, optional): The maximum number of iterations for the search. Defaults to 500.
             top_n (int, optional): The number of top nodes to keep in the top-down search. Defaults to 50.
             top_m (int, optional): The number of top nodes to keep in the bottom-up search. Defaults to 25.
-            top_k (int, optional): The number of top routes to keep in the final solution. Defaults to 2.
+            top_k (int, optional): The number of top building blocks to consider for each bimolecular reaction. Defaults to 2.
             max_depth_top (int, optional): The maximum depth for the top-down search. Defaults to 21, which corresponds
                                            to a max depth of 11 molecule nodes.
             max_depth_bot (int, optional): The maximum depth for the bottom-up search. Defaults to 11, which corresponds
